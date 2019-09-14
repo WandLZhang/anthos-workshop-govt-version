@@ -15,7 +15,7 @@
 # limitations under the License.
 
 echo "### "
-echo "### Migrate all hipster to central cluster"
+echo "### Migrate all government to central cluster"
 echo "### "
 
 # Set vars for DIRs
@@ -28,15 +28,15 @@ export ISTIO_CONFIG_DIR="$BASE_DIR/hybrid-multicluster/istio"
 
 # Install all of the deployments, services and necessary serviceentries on central cluster
 # The following folder contains 
-# - All of the deployments for hipster app
+# - All of the deployments for government app
 # - Correct ENV values for deployments to point to vaious microservices
-# - All of the services for hipster app
+# - All of the services for government app
 # - A service entry required for currency service to function
 
 kubectx central
-kubectl apply -n hipster2  -f ${ISTIO_CONFIG_DIR}/hipster 
-kubectl delete -n hipster2 -f ${ISTIO_CONFIG_DIR}/central/service-entries.yaml
+kubectl apply -n gov2  -f ${ISTIO_CONFIG_DIR}/government 
+kubectl delete -n gov2 -f ${ISTIO_CONFIG_DIR}/central/service-entries.yaml
 
-# Delete remaining Hipster workloads, services, serviceentries and namespace hipster1 from remote cluster
+# Delete remaining Government workloads, services, serviceentries and namespace gov1 from remote cluster
 kubectx remote
-kubectl delete -n hipster1  -f ${ISTIO_CONFIG_DIR}/remote
+kubectl delete -n gov1  -f ${ISTIO_CONFIG_DIR}/remote

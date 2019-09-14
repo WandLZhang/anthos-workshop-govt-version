@@ -17,7 +17,7 @@ metadata:
   name: frontendservice-entry
 spec:
   hosts:
-  - frontend.hipster2.global
+  - frontend.gov2.global
   location: MESH_INTERNAL
   ports:
   - name: http1
@@ -37,7 +37,7 @@ metadata:
   name: productcatalogservice-entry
 spec:
   hosts:
-  - productcatalogservice.hipster2.global
+  - productcatalogservice.gov2.global
   location: MESH_INTERNAL
   ports:
   - name: grpc
@@ -57,7 +57,7 @@ metadata:
   name: cartservice-entry
 spec:
   hosts:
-  - cartservice.hipster2.global
+  - cartservice.gov2.global
   location: MESH_INTERNAL
   ports:
   - name: grpc
