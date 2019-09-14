@@ -205,24 +205,24 @@ pe "cd $BASE_DIR"
 pe "./hybrid-multicluster/istio-dns.sh"
 pe "kubectl --context central -n kube-system get configmap kube-dns -o json | jq '.data' "
 pe "kubectl --context central -n istio-system get configmap coredns -o json | jq -r '.data.Corefile'"
-pe "./hybrid-multicluster/istio-deploy-hipster.sh"
+pe "./hybrid-multicluster/istio-deploy-government.sh"
 
-pe "kubectl --context central -n hipster2 get all"
-pe "kubectl --context remote -n hipster1 get all"
+pe "kubectl --context central -n gov2 get all"
+pe "kubectl --context remote -n gov1 get all"
 
-pe "kubectl --context central -n hipster2 get deploy frontend -ojson | jq -r '[.spec.template.spec.containers[].env[]]'"
-pe "kubectl --context remote -n hipster1 get deploy checkoutservice -ojson | jq -r '[.spec.template.spec.containers[].env[]]'"
+pe "kubectl --context central -n gov2 get deploy frontend -ojson | jq -r '[.spec.template.spec.containers[].env[]]'"
+pe "kubectl --context remote -n gov1 get deploy checkoutservice -ojson | jq -r '[.spec.template.spec.containers[].env[]]'"
 
-pe "kubectl --context central -n hipster2 get serviceentries"
-pe "kubectl --context remote -n hipster1 get serviceentries"
+pe "kubectl --context central -n gov2 get serviceentries"
+pe "kubectl --context remote -n gov1 get serviceentries"
 
-pe "kubectl --context central -n hipster2 get serviceentry checkoutservice-entry -ojson | jq '.spec.endpoints'"
-pe "kubectl --context central -n hipster2 get gateway -ojson | jq '.items[].spec'"
+pe "kubectl --context central -n gov2 get serviceentry checkoutservice-entry -ojson | jq '.spec.endpoints'"
+pe "kubectl --context central -n gov2 get gateway -ojson | jq '.items[].spec'"
 pe "kubectl --context central get -n istio-system service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}'"
 
 p "============================================================"
 
 pe "./hybrid-multicluster/istio-connect.sh"
-pe "./hybrid-multicluster/istio-migrate-hipster.sh"
+pe "./hybrid-multicluster/istio-migrate-government.sh"
 
-pe "kubectl --context central -n hipster2 get deploy frontend -ojson | jq -r '[.spec.template.spec.containers[].env[]]'"
+pe "kubectl --context central -n gov2 get deploy frontend -ojson | jq -r '[.spec.template.spec.containers[].env[]]'"

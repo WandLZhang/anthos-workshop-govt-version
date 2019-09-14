@@ -15,7 +15,7 @@
 # limitations under the License.
 
 echo "### "
-echo "### Deploying hipster app on central and remote clusters"
+echo "### Deploying government app on central and remote clusters"
 echo "### "
 
 
@@ -28,7 +28,7 @@ export ISTIO_CONFIG_DIR="$BASE_DIR/hybrid-multicluster/istio"
 export GWIP_CENTRAL=$(kubectl --context central get -n istio-system service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 export GWIP_REMOTE=$(kubectl --context remote get -n istio-system service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 
-# Prepare central cluster hipster manifests
+# Prepare central cluster government manifests
 # change context to central cluster
 kubectx central
 # Prepare the service-entries yaml to add the remote cluster istio ingress gateway IP 
@@ -37,14 +37,14 @@ export pattern='.*- address:.*'
 export replace="  - address: "$GWIP_REMOTE""
 sed -r -i "s|$pattern|$replace|g" ${ISTIO_CONFIG_DIR}/central/service-entries.yaml
 
-# Create hipster2 namespace and enable istioInjection on the namespace
-kubectl create namespace hipster2
-kubectl label namespace hipster2 istio-injection=enabled
+# Create gov2 namespace and enable istioInjection on the namespace
+kubectl create namespace gov2
+kubectl label namespace gov2 istio-injection=enabled
 
-# Deploy part of hipster app on central cluster in the namespace hipster2
-kubectl apply -n hipster2  -f ${ISTIO_CONFIG_DIR}/central
+# Deploy part of government app on central cluster in the namespace gov2
+kubectl apply -n gov2  -f ${ISTIO_CONFIG_DIR}/central
 
-# Prepare remote cluster hipster manifests
+# Prepare remote cluster government manifests
 # change context to central cluster
 kubectx remote
 # Prepare the service-entries yaml to add the remote cluster istio ingress gateway IP 
@@ -53,9 +53,9 @@ export pattern='.*- address:.*'
 export replace="  - address: "$GWIP_CENTRAL""
 sed -r -i "s|$pattern|$replace|g" ${ISTIO_CONFIG_DIR}/remote/service-entries.yaml
 
-# Create hipster2 namespace and enable istioInjection on the namespace
-kubectl create namespace hipster1
-kubectl label namespace hipster1 istio-injection=enabled
+# Create gov2 namespace and enable istioInjection on the namespace
+kubectl create namespace gov1
+kubectl label namespace gov1 istio-injection=enabled
 
-# Deploy part of hipster app on central cluster in the namespace hipster2
-kubectl apply -n hipster1  -f ${ISTIO_CONFIG_DIR}/remote
+# Deploy part of government app on central cluster in the namespace gov2
+kubectl apply -n gov1  -f ${ISTIO_CONFIG_DIR}/remote

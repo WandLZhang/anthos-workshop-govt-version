@@ -77,17 +77,17 @@ spec:
               command: ["/bin/grpc_health_probe", "-addr=:5050"]
           env:
           - name: PRODUCT_CATALOG_SERVICE_ADDR
-            value: "productcatalogservice.hipster2.global:3550"
+            value: "productcatalogservice.gov2.global:3550"
           - name: SHIPPING_SERVICE_ADDR
-            value: "shippingservice.hipster1.svc.cluster.local:50051"
+            value: "shippingservice.gov1.svc.cluster.local:50051"
           - name: PAYMENT_SERVICE_ADDR
-            value: "paymentservice.hipster1.svc.cluster.local:50051"
+            value: "paymentservice.gov1.svc.cluster.local:50051"
           - name: EMAIL_SERVICE_ADDR
-            value: "emailservice.hipster1.svc.cluster.local:5000"
+            value: "emailservice.gov1.svc.cluster.local:5000"
           - name: CURRENCY_SERVICE_ADDR
-            value: "currencyservice.hipster1.svc.cluster.local:7000"
+            value: "currencyservice.gov1.svc.cluster.local:7000"
           - name: CART_SERVICE_ADDR
-            value: "cartservice.hipster2.global:7070"
+            value: "cartservice.gov2.global:7070"
           # - name: JAEGER_SERVICE_ADDR
           #   value: "jaeger-collector:14268"
           resources:

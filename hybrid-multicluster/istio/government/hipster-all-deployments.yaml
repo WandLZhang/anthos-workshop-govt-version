@@ -47,19 +47,19 @@ spec:
                 value: "shop_session-id=x-liveness-probe"
           env:
           - name: PRODUCT_CATALOG_SERVICE_ADDR
-            value: "productcatalogservice.hipster2.svc.cluster.local:3550"
+            value: "productcatalogservice.gov2.svc.cluster.local:3550"
           - name: CURRENCY_SERVICE_ADDR
-            value: "currencyservice.hipster2.svc.cluster.local:7000"
+            value: "currencyservice.gov2.svc.cluster.local:7000"
           - name: CART_SERVICE_ADDR
-            value: "cartservice.hipster2.svc.cluster.local:7070"
+            value: "cartservice.gov2.svc.cluster.local:7070"
           - name: RECOMMENDATION_SERVICE_ADDR
-            value: "recommendationservice.hipster2.svc.cluster.local:8080"
+            value: "recommendationservice.gov2.svc.cluster.local:8080"
           - name: SHIPPING_SERVICE_ADDR
-            value: "shippingservice.hipster2.svc.cluster.local:50051"
+            value: "shippingservice.gov2.svc.cluster.local:50051"
           - name: CHECKOUT_SERVICE_ADDR
-            value: "checkoutservice.hipster2.svc.cluster.local:5050"
+            value: "checkoutservice.gov2.svc.cluster.local:5050"
           - name: AD_SERVICE_ADDR
-            value: "adservice.hipster2.svc.cluster.local:9555"
+            value: "adservice.gov2.svc.cluster.local:9555"
           # - name: JAEGER_SERVICE_ADDR
           #   value: "jaeger-collector:14268"
           resources:
@@ -178,7 +178,7 @@ spec:
             command: ["/bin/grpc_health_probe", "-addr=:8080"]
         env:
         - name: PRODUCT_CATALOG_SERVICE_ADDR
-          value: "productcatalogservice.hipster2.svc.cluster.local:3550"
+          value: "productcatalogservice.gov2.svc.cluster.local:3550"
         resources:
           requests:
             cpu: 100m
@@ -248,17 +248,17 @@ spec:
               command: ["/bin/grpc_health_probe", "-addr=:5050"]
           env:
           - name: PRODUCT_CATALOG_SERVICE_ADDR
-            value: "productcatalogservice.hipster2.svc.cluster.local:3550"
+            value: "productcatalogservice.gov2.svc.cluster.local:3550"
           - name: SHIPPING_SERVICE_ADDR
-            value: "shippingservice.hipster2.svc.cluster.local:50051"
+            value: "shippingservice.gov2.svc.cluster.local:50051"
           - name: PAYMENT_SERVICE_ADDR
-            value: "paymentservice.hipster2.svc.cluster.local:50051"
+            value: "paymentservice.gov2.svc.cluster.local:50051"
           - name: EMAIL_SERVICE_ADDR
-            value: "emailservice.hipster2.svc.cluster.local:5000"
+            value: "emailservice.gov2.svc.cluster.local:5000"
           - name: CURRENCY_SERVICE_ADDR
-            value: "currencyservice.hipster2.svc.cluster.local:7000"
+            value: "currencyservice.gov2.svc.cluster.local:7000"
           - name: CART_SERVICE_ADDR
-            value: "cartservice.hipster2.svc.cluster.local:7070"
+            value: "cartservice.gov2.svc.cluster.local:7070"
           # - name: JAEGER_SERVICE_ADDR
           #   value: "jaeger-collector:14268"
           resources:
