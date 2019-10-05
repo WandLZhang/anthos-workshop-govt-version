@@ -45,7 +45,7 @@ kubectl label namespace gov2 istio-injection=enabled
 kubectl apply -n gov2  -f ${ISTIO_CONFIG_DIR}/central
 
 # Prepare remote cluster government manifests
-# change context to central cluster
+# change context to remote cluster
 kubectx remote
 # Prepare the service-entries yaml to add the remote cluster istio ingress gateway IP 
 # for all services running in the remote cluster
