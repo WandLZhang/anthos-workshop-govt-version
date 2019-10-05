@@ -41,7 +41,8 @@ gcloud beta container clusters create $CLUSTER_NAME --zone $CLUSTER_ZONE \
     --enable-cloud-monitoring \
     --enable-ip-alias \
     --cluster-version=${CLUSTER_VERSION} \
-    --enable-stackdriver-kubernetes
+    --enable-stackdriver-kubernetes \
+    --identity-namespace=${PROJECT}.svc.id.goog --labels csm=
 
 gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${CLUSTER_ZONE}
 
@@ -53,7 +54,6 @@ KUBECONFIG= kubectl config view --minify --flatten --context=$CLUSTER_NAME > $CL
 kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin --user="$(gcloud config get-value core/account)"
 
     
-
 
 
 
