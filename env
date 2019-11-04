@@ -1,8 +1,43 @@
-export BASE_DIR=$PWD
-echo $BASE_DIR
-export WORK_DIR=$BASE_DIR/workdir
-echo $WORK_DIR
-export PATH=$PATH:$WORK_DIR/bin:
+# Base dirs
+    export BASE_DIR=$(pwd)
+    export WORK_DIR=$BASE_DIR/workdir
+    export PATH=$PATH:$WORK_DIR/bin:
 
-# Install Tree
-sudo apt-get install tree
+
+# GCP project
+    export PROJECT=$(gcloud config get-value project)
+
+
+# Tools versions
+    export ISTIO_VERSION=1.3.2
+    export KUBECTX_VERSION=v0.7.0
+    export HELM_VERSION=v2.14.3
+    export CLUSTER_VERSION=1.14.7-gke.14
+    export KOPS_VERSION=1.12.3
+
+
+## Setting variables for GKE
+    export CLUSTER_NAME="central"
+    export CLUSTER_ZONE="us-central1-b"
+    export CLUSTER_KUBECONFIG=$WORK_DIR/$CLUSTER_NAME.context
+
+
+# Variables for remote kops cluster
+    export REMOTE_CLUSTER_NAME_BASE="remote"
+    export REMOTE_CLUSTER_NAME=$REMOTE_CLUSTER_NAME_BASE.k8s.local
+    export KOPS_STORE=gs://$PROJECT-kops-$REMOTE_CLUSTER_NAME_BASE
+    export REMOTE_KUBECONFIG=$WORK_DIR/remote.context
+    export NODE_COUNT=3
+    export NODE_SIZE=n1-standard-4
+    export ZONES=us-central1-a
+    export INSTANCE_IP=$(curl -s api.ipify.org)
+    export INSTANCE_CIDR=$INSTANCE_IP/32
+
+# Variables for config manager 
+    export OPERATOR_YAML_LOCATION=$(gsutil cat gs://anthos-workshop/cfg-op-loc)
+
+
+# Variables for istio
+    export ISTIO_DIR=$WORK_DIR/istio-$ISTIO_VERSION
+    export ISTIO_CONFIG_DIR="$BASE_DIR/hybrid-multicluster/istio"
+

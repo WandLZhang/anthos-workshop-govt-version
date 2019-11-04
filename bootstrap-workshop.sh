@@ -14,19 +14,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Variables
+set -e
 
 if [[ $OSTYPE == "linux-gnu" && $CLOUD_SHELL == true ]]; then 
 
-    export PROJECT=$(gcloud config get-value project)
-    export BASE_DIR=${BASE_DIR:="${PWD}"}
-    export WORK_DIR=${WORK_DIR:="${BASE_DIR}/workdir"}
-
-    echo "WORK_DIR set to $WORK_DIR"
-    gcloud config set project $PROJECT
-
-    source ./common/settings.env
     ./common/install-tools.sh
+    
     echo -e "\nMultiple tasks are running asynchronously to setup your environment.  It may appear frozen, but you can check the logs in $WORK_DIR for additional details in another terminal window." 
 
     ./gke/provision-gke.sh &> ${WORK_DIR}/provision-gke.log &
@@ -40,7 +33,10 @@ if [[ $OSTYPE == "linux-gnu" && $CLOUD_SHELL == true ]]; then
 
     #./service-mesh/enable-service-mesh.sh
     ./service-mesh/enable-asm-beta.sh
+<<<<<<< HEAD
     
+=======
+>>>>>>> upstream/master
 else
     echo "This has only been tested in GCP Cloud Shell.  Only Linux (debian) is supported".
 fi

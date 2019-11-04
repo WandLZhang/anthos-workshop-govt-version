@@ -19,7 +19,10 @@ echo "### Migrate all government to central cluster"
 echo "### "
 
 # Set vars for DIRs
+<<<<<<< HEAD:hybrid-multicluster/istio-migrate-government.sh
 export ISTIO_VERSION=1.1.15
+=======
+>>>>>>> upstream/master:hybrid-multicluster/istio-migrate-hipster.sh
 export WORK_DIR=${WORK_DIR:="${PWD}/workdir"}
 export ISTIO_DIR=$WORK_DIR/istio-$ISTIO_VERSION
 export BASE_DIR=${BASE_DIR:="${PWD}/.."}

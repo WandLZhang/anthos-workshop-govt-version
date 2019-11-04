@@ -44,7 +44,11 @@ kubectl label namespace gov2 istio-injection=enabled
 # Deploy part of government app on central cluster in the namespace gov2
 kubectl apply -n gov2  -f ${ISTIO_CONFIG_DIR}/central
 
+<<<<<<< HEAD:hybrid-multicluster/istio-deploy-government.sh
 # Prepare remote cluster government manifests
+=======
+# Prepare remote cluster hipster manifests
+>>>>>>> upstream/master:hybrid-multicluster/istio-deploy-hipster.sh
 # change context to remote cluster
 kubectx remote
 # Prepare the service-entries yaml to add the remote cluster istio ingress gateway IP 
@@ -57,5 +61,10 @@ sed -r -i "s|$pattern|$replace|g" ${ISTIO_CONFIG_DIR}/remote/service-entries.yam
 kubectl create namespace gov1
 kubectl label namespace gov1 istio-injection=enabled
 
+<<<<<<< HEAD:hybrid-multicluster/istio-deploy-government.sh
 # Deploy part of government app on central cluster in the namespace gov2
 kubectl apply -n gov1  -f ${ISTIO_CONFIG_DIR}/remote
+=======
+# Deploy part of hipster app on remote cluster in the namespace hipster2
+kubectl apply -n hipster1  -f ${ISTIO_CONFIG_DIR}/remote
+>>>>>>> upstream/master:hybrid-multicluster/istio-deploy-hipster.sh
