@@ -203,7 +203,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/google-samples/microservices-demo/emailservice:v0.1.0
+        image: gcr.io/wz-k8s-learning/emailservice
         ports:
         - containerPort: 8080
         readinessProbe:
