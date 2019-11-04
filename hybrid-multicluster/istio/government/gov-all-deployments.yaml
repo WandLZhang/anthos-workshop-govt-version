@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: gcr.io/wz-k8s-learning/frontend:latest
+          image: gcr.io/wz-k8s-learning/frontend
           ports:
           - containerPort: 8080
           readinessProbe:

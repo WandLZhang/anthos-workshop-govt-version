@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: gcr.io/wz-k8s-learning/frontend:latest
+          image: gcr.io/wz-k8s-learning/frontend
           ports:
           - containerPort: 8080
           readinessProbe:
@@ -87,7 +87,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/wz-k8s-learning/productcatalogservice:latest
+        image: gcr.io/wz-k8s-learning/productcatalogservice
         ports:
         - containerPort: 3550
         readinessProbe:
