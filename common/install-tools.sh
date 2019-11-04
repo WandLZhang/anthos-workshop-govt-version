@@ -18,11 +18,8 @@
 export PROJECT=$(gcloud config get-value project)
 export WORK_DIR=${WORK_DIR:="${PWD}/workdir"}
 
-<<<<<<< HEAD
 export ISTIO_VERSION=1.1.15
 
-=======
->>>>>>> upstream/master
 ## Install Tools
 mkdir -p $WORK_DIR/bin
 
@@ -30,7 +27,6 @@ echo "### "
 echo "### Begin Tools install"
 echo "### "
 
-<<<<<<< HEAD
 ## Install kubectx
 curl -sLO https://raw.githubusercontent.com/ahmetb/kubectx/master/kubectx 
 chmod +x kubectx 
@@ -49,7 +45,6 @@ mv istio-$ISTIO_VERSION $WORK_DIR/
 
 
 
-=======
 ## Install tree
 if command -v tree 2>/dev/null; then
 	echo "tree already installed."
@@ -90,4 +85,3 @@ else
 	mv kops-linux-amd64 $WORK_DIR/bin/kops
 	echo "kops installation complete."
 fi
->>>>>>> upstream/master

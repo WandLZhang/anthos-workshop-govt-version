@@ -18,7 +18,6 @@ echo "### "
 echo "### Begin install istio control plane"
 echo "### "
 
-<<<<<<< HEAD
 # Set vars for DIRs
 export ISTIO_VERSION=1.1.15
 export WORK_DIR=${WORK_DIR:="${PWD}/workdir"}
@@ -28,8 +27,6 @@ echo "BASE_DIR set to $BASE_DIR"
 export ISTIO_CONFIG_DIR="$BASE_DIR/hybrid-multicluster/istio"
 
 
-=======
->>>>>>> upstream/master
 # Install Istio on central
 # Change context
 kubectx central

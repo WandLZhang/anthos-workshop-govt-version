@@ -14,7 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-<<<<<<< HEAD
 # Variables
 export PROJECT=$(gcloud config get-value project)
 export WORK_DIR=${WORK_DIR:="${PWD}/workdir"}
@@ -29,8 +28,6 @@ export ZONES=us-central1-a
 export INSTANCE_IP=$(curl -s api.ipify.org)
 export INSTANCE_CIDR=$INSTANCE_IP/32
 
-=======
->>>>>>> upstream/master
 echo "### "
 echo "### Begin provision remote cluster"
 echo "### "

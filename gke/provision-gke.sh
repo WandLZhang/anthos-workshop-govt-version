@@ -20,7 +20,6 @@ echo "### "
 echo "### Begin Provision GKE"
 echo "### "
 
-<<<<<<< HEAD
 
 gcloud beta container clusters create $CLUSTER_NAME --zone $CLUSTER_ZONE \
     --username "admin" \
@@ -38,7 +37,6 @@ gcloud beta container clusters create $CLUSTER_NAME --zone $CLUSTER_ZONE \
     --enable-stackdriver-kubernetes \
     --identity-namespace=${PROJECT}.svc.id.goog --labels csm=
 
-=======
 ## Check if cluster already exists to avoid errors
 EXISTING_CLUSTER=$(gcloud container clusters list --format="value(name)" --filter="name ~ ${CLUSTER_NAME} AND location:${CLUSTER_ZONE}")
 
@@ -63,7 +61,6 @@ else
 fi
 
 echo "Getting cluster credentials"
->>>>>>> upstream/master
 gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${CLUSTER_ZONE}
 
 echo "Renaming kubectx context to ${CLUSTER_NAME} and switching to context"
@@ -72,7 +69,6 @@ kubectx ${CLUSTER_NAME}
 
 KUBECONFIG= kubectl config view --minify --flatten --context=$CLUSTER_NAME > $CLUSTER_KUBECONFIG
 
-<<<<<<< HEAD
 kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin --user="$(gcloud config get-value core/account)"
 
     
@@ -80,7 +76,6 @@ kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-ad
 
 
 
-=======
 EXISTING_BINDING=$(kubectl get clusterrolebinding cluster-admin-binding -o json | jq -r '.metadata.name')
 if [ "${EXISTING_BINDING}" == "cluster-admin-binding" ]; then
     echo "clusterrolebinding already exists."
@@ -92,4 +87,3 @@ fi
 echo "### "
 echo "### Provision GKE complete"
 echo "### "
->>>>>>> upstream/master

@@ -33,10 +33,7 @@ if [[ $OSTYPE == "linux-gnu" && $CLOUD_SHELL == true ]]; then
 
     #./service-mesh/enable-service-mesh.sh
     ./service-mesh/enable-asm-beta.sh
-<<<<<<< HEAD
     
-=======
->>>>>>> upstream/master
 else
     echo "This has only been tested in GCP Cloud Shell.  Only Linux (debian) is supported".
 fi

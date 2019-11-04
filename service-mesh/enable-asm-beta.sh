@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 # Copyright 2019 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +13,6 @@
 # limitations under the License.
 kubectx central
 
->>>>>>> upstream/master
 export PROJECT_ID=$(gcloud config get-value project)
 export CLUSTER=central
 export ZONE=us-central1-b
